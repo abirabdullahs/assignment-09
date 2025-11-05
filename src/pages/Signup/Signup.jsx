@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, up
 import { auth } from '../../firebase/firebase.config';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { toast as hotToast } from 'react-hot-toast';
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -50,7 +51,9 @@ const Signup = () => {
                     photoURL: photoURL,
                 })
                     .then(() => {
+                        // show both react-toastify (existing) and a single react-hot-toast example
                         toast.success("Registration successful!");
+                        hotToast.success("Registration successful!");
                         auth.signOut().then(() => {
                             Navigate("/login");
                             toast.info("Please login with your new account");
