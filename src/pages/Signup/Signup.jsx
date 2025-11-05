@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, up
 import { auth } from '../../firebase/firebase.config';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Signup = () => {
