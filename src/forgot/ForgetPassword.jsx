@@ -10,7 +10,7 @@ const ForgetPassword = () => {
     const {email} = location.state || {};
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // ✅ spelling fixed
+        e.preventDefault(); 
         const email = e.target.email.value;
 
         if (!email) {

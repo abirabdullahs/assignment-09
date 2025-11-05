@@ -13,7 +13,7 @@ const Banner = ({
     <section className="w-full">
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative rounded-xl overflow-hidden shadow-lg">
-          {/* Image (clickable) */}
+        
           <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="block">
             <img
               src={imageUrl}
@@ -22,7 +22,7 @@ const Banner = ({
             />
           </a>
 
-          {/* Overlay content */}
+         
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-black/60 w-full h-full"></div>
             <div className="absolute px-6 py-8 text-center text-white max-w-2xl">

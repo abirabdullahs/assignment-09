@@ -7,7 +7,6 @@ import { useAuth } from '../hooks/useAuth';
 const Root = () => {
 
     const {user} = useAuth();
-    // keep a local editable copy of user; sync when auth user changes
     const [editUser, setEditUser] = useState(() => user || {});
 
     useEffect(() => {

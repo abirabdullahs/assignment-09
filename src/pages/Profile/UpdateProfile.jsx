@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase/firebase.config';
 
 const UpdateProfile = () => {
 
@@ -10,13 +12,33 @@ const UpdateProfile = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(editUser)
-        toast("saved Changes");
-        Navigate("/profile")
+       
+        const { displayName, photoURL } = editUser || {};
+        if (auth.currentUser) {
+            updateProfile(auth.currentUser, {
+                displayName: displayName || auth.currentUser.displayName,
+                photoURL: photoURL || auth.currentUser.photoURL,
+            })
+                .then(() => {
+                 
+                    setEditUser({ ...editUser });
+                    toast.success("Saved changes");
+                    Navigate("/profile");
+                })
+                .catch((err) => {
+                    toast.error(err.message || "Failed to update profile");
+                });
+        } else {
+            
+            setEditUser({ ...editUser });
+            toast.success("Saved changes (local)");
+            Navigate("/profile");
+        }
     }
     return (
         <div className='flex justify-center p-20'>
             <form onSubmit={handleSubmit} className="space-y-4 w-5xl p-5 shadow-md">
-                {/* Image URL */}
+             
                 <div>
                     <label className="block mb-1 font-medium">Profile Image URL</label>
                     <input
