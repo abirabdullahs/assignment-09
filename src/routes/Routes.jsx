@@ -33,11 +33,19 @@ export const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        Component: Profile
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        )
       },
       {
         path: 'update-profile',
-        Component: UpdateProfile
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        )
       },
       {
         path: "/skill/:id",
